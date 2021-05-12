@@ -8,7 +8,5 @@ namespace WebApplication.Entities
     {
         public string TypeName { get; set; }
         public string Model { get; set; }
-        
-        public List<Car> Cars { get; set; }
     }
 }

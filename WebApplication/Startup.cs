@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
+using AutoMapperBuilder.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -21,9 +22,13 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<CarMechanicContext>(
-                o => o.UseMySql(
-                    "server=localhost;port=3306;database=carmechanic;user=admin;password=admin",
-                    new MySqlServerVersion(new Version(8, 0, 23))));
+                o =>
+                { 
+                    o.UseMySql(
+                        "server=localhost;port=3306;database=carmechanic;user=admin;password=admin",
+                        new MySqlServerVersion(new Version(8, 0, 23)));
+                    o.EnableSensitiveDataLogging();
+                });
             services.AddTransient<ICarService, CarService>();
             services.AddTransient<IRepairService, RepairService>();
             services.AddTransient<CarMechanicContext, CarMechanicContext>();
@@ -31,7 +36,6 @@ namespace WebApplication
             {
                 o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
             });
-
             services.AddAutoMapper(typeof(CarMechanicMapper));
 
         }

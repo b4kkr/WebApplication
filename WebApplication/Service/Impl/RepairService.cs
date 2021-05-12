@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using WebApplication.Dto;
+using WebApplication.Entities;
 using WebApplication.Repository;
 
 namespace WebApplication.Service.Impl
@@ -25,27 +28,45 @@ namespace WebApplication.Service.Impl
 
         public RepairDto GetByGuid(Guid guid)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<RepairDto>(_carMechanicContext.Repairs.SingleOrDefault(x => x.Guid == guid));
         }
 
-        public RepairDto Update(long id, RepairDto repairDto)
+        public RepairDto Update(Guid guid, RepairDto repairDto)
         {
-            throw new NotImplementedException();
+            Repair repair = _carMechanicContext.Repairs.Include(x => x.Car).ThenInclude(x => x.Type).Include(x => x.Car.User)
+                .SingleOrDefault(x => x.Guid == guid);
+            if (repair == null) return null;
+            repair.Paid = repairDto.Paid ?? false;
+            repair.Price = repairDto.Price;
+            repair.StatusEntity = _mapper.Map<StatusEntity>(repairDto.Status);
+            repair.Works = repairDto.Works;
+            _carMechanicContext.SaveChanges();
+            return _mapper.Map<RepairDto>(repair);
         }
 
         public List<RepairDto> GetAll()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<RepairDto>>(_carMechanicContext.Repairs.Include(x => x.Car).ThenInclude(x => x.Type).Include(x => x.Car.User).Include(x => x.StatusEntity).ToList());
         }
 
         public RepairDto Save(RepairDto repairDto)
         {
-            throw new NotImplementedException();
+            Repair repair = _mapper.Map<Repair>(repairDto);
+            repair.Car.Repair = repair;
+            repair.StatusEntity =
+                _carMechanicContext.StatusEntities.SingleOrDefault(x => x.Status == Status.AddedForService);
+            repair.Car.Type =
+                _carMechanicContext.CarTypes.SingleOrDefault(x =>
+                    x.Model == repairDto.Car.Type.Model && x.TypeName == repair.Car.Type.TypeName) ?? _mapper.Map<CarType>(repairDto.Car.Type);
+            _carMechanicContext.Repairs.Add(repair);
+            _carMechanicContext.SaveChanges();
+            RepairDto dto = _mapper.Map<RepairDto>(repair);
+            return dto;
         }
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            _carMechanicContext.Repairs.Remove(_carMechanicContext.Repairs.Find(id));
         }
     }
 }

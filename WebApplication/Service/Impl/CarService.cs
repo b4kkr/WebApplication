@@ -33,7 +33,6 @@ namespace WebApplication.Service.Impl
             Car c = carMapper.Map<Car>(car);
             repository.Cars.Add(c);
             repository.SaveChanges();
-            repository.SaveChanges();
             car.Id = c.Id;
             return car;
         }

@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.InteropServices;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace WebApplication.Entities
@@ -14,11 +15,7 @@ namespace WebApplication.Entities
         public string Password { get; set; }
         [Column("phone_number")]
         public string PhoneNumber { get; set; }
-        public Repair Repair { get; set; }
-        public Car Car { get; set; }
-        
-        public long RepairId { get; set; }
-        public long CarId { get; set; }
-        
+        [InverseProperty("User")]
+        public virtual Car Car { get; set; }
     }
 }

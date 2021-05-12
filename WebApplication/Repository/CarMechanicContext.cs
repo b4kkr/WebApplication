@@ -11,42 +11,35 @@ namespace WebApplication.Repository
         public DbSet<Repair> Repairs { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<CarType> CarTypes { get; set; }
-        public DbSet<Status> Statuses { get; set; }
+        public DbSet<StatusEntity> StatusEntities { get; set; }
 
         public CarMechanicContext(DbContextOptions options) : base(options)
         {
-            Database.EnsureDeleted();
             Database.EnsureCreated();
+            //InitDb();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Car>()
-                .HasOne(c => c.Type).WithMany(t => t.Cars)
-                .HasForeignKey(c => c.CarTypeId);
-            modelBuilder.Entity<Car>()
-                .HasOne(c => c.Repair).WithOne(r => r.Car)
-                .HasForeignKey<Car>(c => c.RepairId);
-            modelBuilder.Entity<Car>()
-                .HasOne(c => c.User).WithOne(u => u.Car)
-                .HasForeignKey<Car>(c => c.UserId);
+            modelBuilder.Entity<StatusEntity>()
+                .Property(r => r.Status).HasConversion(v => v.ToString(),
+                    v => Enum.Parse<Status>(v));
+            modelBuilder.Entity<StatusEntity>()
+                .HasMany<Repair>().WithOne(r => r.StatusEntity);
+            modelBuilder.Entity<Repair>()
+                .Property(r => r.Guid).HasConversion(v => v.ToString(), v => Guid.Parse(v));
+        }
+
+        private void InitDb()
+        {
+            Database.EnsureDeleted();
+             Database.EnsureCreated();
+            StatusEntities.Add(new StatusEntity() {Status = Status.Finished});
+            StatusEntities.Add(new StatusEntity() {Status = Status.AddedForService});
+            StatusEntities.Add(new StatusEntity() {Status = Status.WorkingOnCarNow});
+            StatusEntities.Add(new StatusEntity() {Status = Status.WaitingForParts}); 
+            SaveChanges();
             
-            modelBuilder.Entity<User>()
-                .HasOne(c => c.Car).WithOne(u => u.User)
-                .HasForeignKey<User>(u => u.CarId);
-            modelBuilder.Entity<User>()
-                .HasOne(u => u.Repair).WithOne(r => r.User)
-                .HasForeignKey<User>(u => u.RepairId);
-            
-            modelBuilder.Entity<Repair>()
-                .HasOne(r => r.Car).WithOne(c => c.Repair)
-                .HasForeignKey<Repair>(r =>r.CarId);
-            modelBuilder.Entity<Repair>()
-                .HasOne(r => r.User).WithOne(u => u.Repair)
-                .HasForeignKey<Repair>(r => r.UserId);
-            modelBuilder.Entity<Repair>()
-                .HasOne(r => r.Status).WithMany(s => s.Repairs)
-                .HasForeignKey(r => r.StatusId);
         }
     }
 }

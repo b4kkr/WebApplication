@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication.Dto;
@@ -9,19 +10,19 @@ namespace WebApplication.Interfaces
     {
         [HttpGet]
         [Route("/repairs")]
-        public abstract List<Repair> GetAll();
+        public abstract List<RepairDto> GetAll();
 
         [HttpGet]
-        [Route("/repairs/{id:long}")]
-        public abstract RepairDto GetById(long id);
+        [Route("/repairs/{guid}")]
+        public abstract RepairDto GetByGuid(string guid);
 
         [HttpPost]
         [Route("/repairs")]
         public abstract RepairDto Save([FromBody] RepairDto repairDto);
 
         [HttpPut]
-        [Route("/repairs/{id:long}")]
-        public abstract RepairDto Update(long id, [FromBody] RepairDto repairDto);
+        [Route("/repairs/{guid}")]
+        public abstract RepairDto Update(string guid, [FromBody] RepairDto repairDto);
 
         [HttpDelete]
         [Route("/repairs/{id:long}")]

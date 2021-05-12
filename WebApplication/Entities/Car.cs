@@ -13,15 +13,13 @@ namespace WebApplication.Entities
         public DateTime Vintage { get; set; }
         [Column("engine_serial")]
         public string EngineSerial { get; set; }
-        [Column("user")]
+        [ForeignKey("user_id")]
         public User User { get; set; }
-        [Column("type")]
+        [ForeignKey("car_type_id")]
         public CarType Type { get; set; }
-        [Column("repair")]
-        public Repair Repair { get; set; }
         
-        public long UserId { get; set; }
-        public long RepairId { get; set; }
-        public long CarTypeId { get; set; }
+        [InverseProperty("Car")]
+        public Repair Repair { get; set; }
+
     }
 }

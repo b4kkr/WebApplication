@@ -3,12 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication.Entities
 {
-    [Table("statuses")]
-    public class Status : AbstractEntity
+    public enum Status
     {
-        [Column("description")]
-        public string Description { get; set; }
-        
-        public List<Repair> Repairs { get; set; }
+        AddedForService,
+        WaitingForParts,
+        WorkingOnCarNow,
+        Finished
     }
 }

@@ -9,7 +9,7 @@ namespace WebApplication.Service
         RepairDto GetById(long id);
         RepairDto GetByGuid(Guid guid);
 
-        RepairDto Update(long id, RepairDto repairDto);
+        RepairDto Update(Guid guid, RepairDto repairDto);
 
         List<RepairDto> GetAll();
 
