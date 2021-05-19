@@ -27,5 +27,9 @@ namespace WebApplication.Interfaces
         [HttpDelete]
         [Route("/repairs/{id:long}")]
         public abstract void Delete(long id);
+
+        [HttpGet]
+        [Route("/repairs/repair")]
+        public abstract RepairDto GetByEmailAndPassword([FromQuery(Name = "email")] string email, [FromQuery(Name = "password")] string password);
     }
 }

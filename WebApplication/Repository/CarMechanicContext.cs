@@ -15,8 +15,9 @@ namespace WebApplication.Repository
 
         public CarMechanicContext(DbContextOptions options) : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
             //InitDb();
+            //Database.EnsureDeleted();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -33,7 +34,7 @@ namespace WebApplication.Repository
         private void InitDb()
         {
             Database.EnsureDeleted();
-             Database.EnsureCreated();
+            Database.EnsureCreated();
             StatusEntities.Add(new StatusEntity() {Status = Status.Finished});
             StatusEntities.Add(new StatusEntity() {Status = Status.AddedForService});
             StatusEntities.Add(new StatusEntity() {Status = Status.WorkingOnCarNow});

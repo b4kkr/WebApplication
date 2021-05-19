@@ -42,5 +42,10 @@ namespace WebApplication.Resources
         {
             _repairService.Delete(id);
         }
+
+        public override RepairDto GetByEmailAndPassword(string email, string password)
+        {
+            return _repairService.GetByEmailAndPassword(email, password);
+        }
     }
 }

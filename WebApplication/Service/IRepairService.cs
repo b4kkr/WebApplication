@@ -15,5 +15,7 @@ namespace WebApplication.Service
 
         RepairDto Save(RepairDto repairDto);
         void Delete(long id);
+
+        RepairDto GetByEmailAndPassword(string email, string password);
     }
 }

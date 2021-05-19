@@ -36,9 +36,15 @@ namespace WebApplication.Mapper
                     opt => opt.MapFrom(dto => dto.Password ?? PasswordGenerator.Instance.Generate(8)))
                 .ForMember(entity => entity.Car, opt => opt.Ignore());
             CreateMap<List<Car>, List<CarDto>>().ReverseMap();
+
             CreateMap<string, StatusEntity>()
                 .ForMember(x => x.Status,
                     opt => opt.MapFrom(x => new StatusEntity(){Status = Enum.Parse<Status>(x ?? Status.AddedForService.ToString())}));
+            CreateMap<StatusEntity, StatusDto>()
+                .ForMember(x => x.StatusName, opt => opt.MapFrom(x => x.Status.ToString()))
+                .ReverseMap()
+                .ForMember(x => x.Status, opt => opt.MapFrom(x => Enum.Parse<Status>(x.StatusName)));
+            CreateMap<List<StatusEntity>, List<StatusDto>>().ReverseMap();
 
         }
     }

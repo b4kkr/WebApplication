@@ -38,7 +38,8 @@ namespace WebApplication.Service.Impl
             if (repair == null) return null;
             repair.Paid = repairDto.Paid ?? false;
             repair.Price = repairDto.Price;
-            repair.StatusEntity = _mapper.Map<StatusEntity>(repairDto.Status);
+            repair.StatusEntity =
+                _carMechanicContext.StatusEntities.SingleOrDefault(x => x.Status == Enum.Parse<Status>(repairDto.Status));
             repair.Works = repairDto.Works;
             _carMechanicContext.SaveChanges();
             return _mapper.Map<RepairDto>(repair);
@@ -67,6 +68,15 @@ namespace WebApplication.Service.Impl
         public void Delete(long id)
         {
             _carMechanicContext.Repairs.Remove(_carMechanicContext.Repairs.Find(id));
+        }
+
+        public RepairDto GetByEmailAndPassword(string email, string password)
+        {
+            User user = _carMechanicContext.Users.Include(x => x.Car).ThenInclude(x => x.Repair).ThenInclude(x => x.StatusEntity)
+                .Include(x => x.Car.Type)
+                .SingleOrDefault(x => x.Email == email && x.Password == password);
+            if (user == null) return null;
+            return _mapper.Map<RepairDto>(user.Car.Repair);
         }
     }
 }
