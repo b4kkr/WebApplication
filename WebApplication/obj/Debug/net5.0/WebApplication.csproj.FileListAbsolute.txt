@@ -107,3 +107,10 @@
 /Users/b4kk/RiderProjects/WebApplication1/WebApplication/bin/Debug/net5.0/AutoMapperBuilder.dll
 /Users/b4kk/RiderProjects/WebApplication1/WebApplication/bin/Debug/net5.0/Npgsql.dll
 /Users/b4kk/RiderProjects/WebApplication1/WebApplication/bin/Debug/net5.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/Users/b4kk/RiderProjects/WebApplication1/WebApplication/bin/Debug/net5.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/b4kk/RiderProjects/WebApplication1/WebApplication/bin/Debug/net5.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/b4kk/RiderProjects/WebApplication1/WebApplication/bin/Debug/net5.0/Microsoft.IdentityModel.Logging.dll
+/Users/b4kk/RiderProjects/WebApplication1/WebApplication/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.dll
+/Users/b4kk/RiderProjects/WebApplication1/WebApplication/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/b4kk/RiderProjects/WebApplication1/WebApplication/bin/Debug/net5.0/Microsoft.IdentityModel.Tokens.dll
+/Users/b4kk/RiderProjects/WebApplication1/WebApplication/bin/Debug/net5.0/System.IdentityModel.Tokens.Jwt.dll

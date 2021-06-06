@@ -1,5 +1,6 @@
 using System;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -54,9 +55,6 @@ namespace WebApplication
             {
                 app.UseDeveloperExceptionPage();
             }
-            
-            //ToDo: hibakezelést ide kell implementálni
-
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

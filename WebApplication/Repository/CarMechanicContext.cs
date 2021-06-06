@@ -19,6 +19,8 @@ namespace WebApplication.Repository
             //InitDb();
             //Database.EnsureDeleted();
         }
+        
+        public CarMechanicContext() {}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
