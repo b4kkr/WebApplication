@@ -38,9 +38,11 @@ namespace WebApplication.Service.Impl
             if (repair == null) return null;
             repair.Paid = repairDto.Paid ?? false;
             repair.Price = repairDto.Price;
-            repair.StatusEntity =
+            repair.StatusEntity=
                 _carMechanicContext.StatusEntities.SingleOrDefault(x => x.Status == Enum.Parse<Status>(repairDto.Status));
             repair.Works = repairDto.Works;
+            repair.Car = _carMechanicContext.Cars.SingleOrDefault(x => x.Id == repairDto.Car.Id);
+            repair.Car.Repair = repair;
             _carMechanicContext.SaveChanges();
             return _mapper.Map<RepairDto>(repair);
         }
@@ -68,6 +70,7 @@ namespace WebApplication.Service.Impl
         public void Delete(long id)
         {
             _carMechanicContext.Repairs.Remove(_carMechanicContext.Repairs.Find(id));
+            _carMechanicContext.SaveChanges();
         }
 
         public RepairDto GetByEmailAndPassword(string email, string password)

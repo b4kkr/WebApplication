@@ -5,7 +5,7 @@ namespace WebApplication.Entities
 {
     public abstract class AbstractEntity
     {
-        [Key]
+        //[Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("id")]
         public long Id { get; set; }

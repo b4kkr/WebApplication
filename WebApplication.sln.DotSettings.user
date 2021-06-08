@@ -1,9 +1,13 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/Highlighting/AnalysisEnabled/@EntryValue">VISIBLE_FILES</s:String>
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
   &lt;Assembly Path="/usr/local/share/dotnet/packs/Microsoft.AspNetCore.App.Ref/5.0.0/ref/net5.0/Microsoft.AspNetCore.Identity.dll" /&gt;
 &lt;/AssemblyExplorer&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=23474a85_002Dc5c1_002D48ea_002Dad62_002Dcbcf3688799f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CarServiceTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;MSTest::9C14B312-FD3B-430C-B70D-0AA473ED88A1::net5.0::CarmechanicTest.CarServiceTest&lt;/TestId&gt;
+    &lt;TestId&gt;MSTest::9C14B312-FD3B-430C-B70D-0AA473ED88A1::net5.0::CarmechanicTest.RepairServiceTest.TestCreateRepair&lt;/TestId&gt;
+    &lt;TestId&gt;MSTest::9C14B312-FD3B-430C-B70D-0AA473ED88A1::net5.0::CarmechanicTest.RepairServiceTest.TestUpdateRepair&lt;/TestId&gt;
+    &lt;TestId&gt;MSTest::9C14B312-FD3B-430C-B70D-0AA473ED88A1::net5.0::CarmechanicTest.RepairServiceTest&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

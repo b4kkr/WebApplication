@@ -14,5 +14,7 @@ namespace WebApplication.Service
         List<CarDto> GetAll();
 
         CarDto Update(long id, CarDto car);
+
+        void Delete(long id);
     }
 }

@@ -4,6 +4,8 @@ namespace WebApplication.Dto
 {
     public class RepairDto
     {
+        
+        public long Id { get; set; }
         public string RepairGuid { get; set; }
         public string Status { get; set; }
         public CarDto Car { get; set; }

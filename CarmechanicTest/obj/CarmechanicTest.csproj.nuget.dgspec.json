@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/b4kk/RiderProjects/WebApplication1/CarmechanicTest/CarmechanicTest.csproj": {}
+    "/Users/b4kk/RiderProjects/WebApplication/CarmechanicTest/CarmechanicTest.csproj": {}
   },
   "projects": {
-    "/Users/b4kk/RiderProjects/WebApplication1/CarmechanicTest/CarmechanicTest.csproj": {
+    "/Users/b4kk/RiderProjects/WebApplication/CarmechanicTest/CarmechanicTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/b4kk/RiderProjects/WebApplication1/CarmechanicTest/CarmechanicTest.csproj",
+        "projectUniqueName": "/Users/b4kk/RiderProjects/WebApplication/CarmechanicTest/CarmechanicTest.csproj",
         "projectName": "CarmechanicTest",
-        "projectPath": "/Users/b4kk/RiderProjects/WebApplication1/CarmechanicTest/CarmechanicTest.csproj",
+        "projectPath": "/Users/b4kk/RiderProjects/WebApplication/CarmechanicTest/CarmechanicTest.csproj",
         "packagesPath": "/Users/b4kk/.nuget/packages/",
-        "outputPath": "/Users/b4kk/RiderProjects/WebApplication1/CarmechanicTest/obj/",
+        "outputPath": "/Users/b4kk/RiderProjects/WebApplication/CarmechanicTest/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/b4kk/.nuget/NuGet/NuGet.Config"
@@ -26,8 +26,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "/Users/b4kk/RiderProjects/WebApplication1/WebApplication/WebApplication.csproj": {
-                "projectPath": "/Users/b4kk/RiderProjects/WebApplication1/WebApplication/WebApplication.csproj"
+              "/Users/b4kk/RiderProjects/WebApplication/WebApplication/WebApplication.csproj": {
+                "projectPath": "/Users/b4kk/RiderProjects/WebApplication/WebApplication/WebApplication.csproj"
               }
             }
           }
@@ -68,7 +68,7 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.6, )"
+              "version": "[5.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite.Core": {
               "target": "Package",
@@ -105,14 +105,14 @@
         }
       }
     },
-    "/Users/b4kk/RiderProjects/WebApplication1/WebApplication/WebApplication.csproj": {
+    "/Users/b4kk/RiderProjects/WebApplication/WebApplication/WebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/b4kk/RiderProjects/WebApplication1/WebApplication/WebApplication.csproj",
+        "projectUniqueName": "/Users/b4kk/RiderProjects/WebApplication/WebApplication/WebApplication.csproj",
         "projectName": "WebApplication",
-        "projectPath": "/Users/b4kk/RiderProjects/WebApplication1/WebApplication/WebApplication.csproj",
+        "projectPath": "/Users/b4kk/RiderProjects/WebApplication/WebApplication/WebApplication.csproj",
         "packagesPath": "/Users/b4kk/.nuget/packages/",
-        "outputPath": "/Users/b4kk/RiderProjects/WebApplication1/WebApplication/obj/",
+        "outputPath": "/Users/b4kk/RiderProjects/WebApplication/WebApplication/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/b4kk/.nuget/NuGet/NuGet.Config"
@@ -163,11 +163,11 @@
               "target": "Package",
               "version": "[1.1.0, )"
             },
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
-              "target": "Package",
-              "version": "[5.0.6, )"
-            },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.5, )"
             },
@@ -180,14 +180,6 @@
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[5.0.1, )"
-            },
-            "Npgsql.EntityFrameworkCore.PostgreSQL": {
-              "target": "Package",
-              "version": "[5.0.5.1, )"
-            },
-            "Pomelo.EntityFrameworkCore.MySql": {
-              "target": "Package",
-              "version": "[5.0.0, )"
             }
           },
           "imports": [

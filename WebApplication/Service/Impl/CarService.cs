@@ -2,10 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using WebApplication.Dto;
 using WebApplication.Entities;
-using WebApplication.Interfaces;
 using WebApplication.Repository;
 
 namespace WebApplication.Service.Impl
@@ -50,8 +48,19 @@ namespace WebApplication.Service.Impl
             dbCar.EngineSerial = car.EngineSerial;
             dbCar.Type.TypeName = car.Type.TypeName;
             dbCar.Type.Model = car.Type.Model;
+            dbCar.User = repository.Users.FirstOrDefault(x => x.Id == car.User.Id);
+            dbCar.User.Car = dbCar;
+            dbCar.Repair = repository.Repairs.FirstOrDefault(x => x.Guid == Guid.Parse(car.User.RepairGuid));
+            dbCar.Repair.Car = dbCar;
             repository.SaveChanges();
             return carMapper.Map<CarDto>(dbCar);
+        }
+
+        public void Delete(long id)
+        {
+            var car = repository.Cars.FirstOrDefault(x => x.Id == id);
+            if (car != null) repository.Cars.Remove(car);
+            repository.SaveChanges();
         }
     }
 }

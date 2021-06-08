@@ -1,6 +1,4 @@
-using System;
 using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -30,10 +28,9 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
-            var mySqlVersion = new MySqlServerVersion(new Version(8, 0, 23));
             services.AddDbContext<CarMechanicContext>(opt =>
             {
-                opt.UseMySql(connectionString, mySqlVersion);
+                opt.UseSqlServer(connectionString);
                 opt.EnableSensitiveDataLogging();
                 opt.EnableDetailedErrors();
             });
