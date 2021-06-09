@@ -23,6 +23,8 @@ namespace WebApplication.Repository
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Repair>().HasAlternateKey(c => c.Guid);
+                
             modelBuilder.Entity<Car>().Property(x => x.Id).UseHiLo("DBSequenceHiLo");
             modelBuilder.Entity<StatusEntity>().Property(x => x.Id).UseHiLo("DBSequenceHiLo");
             modelBuilder.Entity<Repair>().Property(x => x.Id).UseHiLo("DBSequenceHiLo");
